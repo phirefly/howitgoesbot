@@ -14,7 +14,10 @@ defmodule Howitgoesbot.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [
+      extra_applications: [:logger],
+      mod: { Howitgoesbot, []}
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -27,7 +30,8 @@ defmodule Howitgoesbot.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:cowboy, "~>1.0.0"},
-     {:plug, "~>1.0"}]
+    [{:plug_cowboy, "~>2.0"},
+     {:poison, "~> 3.1"},
+     {:plug, "~>1.6"}]
   end
 end

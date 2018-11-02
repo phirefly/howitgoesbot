@@ -1,8 +1,18 @@
 defmodule HowitgoesbotTest do
   use ExUnit.Case
-  doctest Howitgoesbot
+  use Plug.Test
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  doctest Howitgoesbot
+  alias Howitgoesbot.Router
+
+  @opts Router.init([])
+
+  test "responds to greeting" do
+    conn = conn(:post, "/webhook", "")
+           |> Router.call(@opts)
+
+    assert conn.state == :sent
+    assert conn.status == 200
+    assert conn.resp_body == "ohai"
   end
 end

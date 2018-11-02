@@ -10,7 +10,9 @@ defmodule Howitgoesbot.Router do
   plug :dispatch
 
   post "/webhook" do
-    send_resp(conn, 200, "ohai")
+    # CURRENT
+    # IO.puts Poison.Parser.parse!(~s({"name": "Devin Torres", "age": 27}), %{})
+    send_resp(conn, 200, "blah")
   end
 
   match _ do

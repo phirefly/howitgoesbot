@@ -11,6 +11,15 @@ defmodule Howitgoesbot.Router do
 
   post "/webhook" do
     # send_resp(conn, 200, conn.body_params["challenge"]) #---> Verifies Slackbot API
+    # IO.puts inspect conn.body_params
+
+    params = conn.body_params
+    case params["text"] do
+       "list" -> send_resp(conn, 200, ~s({"text":"Here is your list..."}))
+       "help" -> send_resp(conn, 200, ~s({"text":"Right away!"}))
+       "start" -> send_resp(conn, 200, ~s({"text":"Alrighty. Let's begin..."}))
+       _ -> send_resp(conn, 200, ~s({"text":"Catch all from HigBot"}))
+    end
   end
 
   match _ do

@@ -10,9 +10,7 @@ defmodule Howitgoesbot.Router do
   plug :dispatch
 
   post "/webhook" do
-    # CURRENT
-    # IO.puts Poison.Parser.parse!(~s({"name": "Devin Torres", "age": 27}), %{})
-    send_resp(conn, 200, "blah")
+    # send_resp(conn, 200, conn.body_params["challenge"]) #---> Verifies Slackbot API
   end
 
   match _ do

@@ -15,7 +15,7 @@ defmodule Howitgoesbot.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [
-      extra_applications: [:logger],
+      extra_applications: [:logger, :ecto, :postgrex],
       mod: { Howitgoesbot, []}
     ]
   end
@@ -32,6 +32,8 @@ defmodule Howitgoesbot.Mixfile do
   defp deps do
     [{:plug_cowboy, "~>2.0"},
      {:poison, "~> 3.1"},
-     {:plug, "~>1.6"}]
+     {:plug, "~>1.6"},
+     {:postgrex, ">= 0.11.1"},
+     {:ecto, "~> 2.0"}]
   end
 end
